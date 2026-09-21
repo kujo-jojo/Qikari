@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>QiKari</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+    }
+
+    #app {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #tabs {
+      display: flex;
+      gap: 6px;
+      padding: 8px;
+      background: #1c1c1c;
+      overflow-x: auto;
+    }
+
+    .tab {
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      background: #333;
+      color: white;
+      cursor: pointer;
+      white-space: nowrap;
+      font-size: 14px;
+    }
+
+    .tab:hover {
+      background: #444;
+    }
+
+    .tab.active {
+      background: #666;
+    }
+
+    #browser {
+      flex: 1;
+      min-height: 0;
+    }
+
+    #browserFrame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+
+    <div id="tabs">
+      <button class="tab active" data-url="https://comix.ws">
+        Comix
+      </button>
+
+      <button class="tab" data-url="https://reanime.to">
+        Reanime
+      </button>
+
+      <button class="tab" data-url="https://chikari.moe">
+        Chikari
+      </button>
+
+      <button class="tab" data-url="https://kisskh.ovh">
+        Kisskh
+      </button>
+    </div>
+
+    <div id="browser">
+      <iframe
+        id="browserFrame"
+        src="https://comix.ws">
+      </iframe>
+    </div>
+
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const browserFrame = document.getElementById("browserFrame");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+
+        tabs.forEach(t => {
+          t.classList.remove("active");
+        });
+
+        tab.classList.add("active");
+
+        browserFrame.src = tab.dataset.url;
+      });
+    });
+  </script>
+
+</body>
+</html>
