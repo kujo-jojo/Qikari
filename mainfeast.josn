@@ -1,8 +1,16 @@
-{
+ {
   "name": "QiKari",
   "short_name": "QiKari",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#111111",
-  "theme_color": "#1c1c1c"
+  "theme_color": "#1c1c1c",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
 }
